@@ -29,7 +29,7 @@ styleLoader.pitch = function (remainingRequest) {
       return relativePath;
     })
     .join("!");
-  console.log("relativeRequest", relativeRequest);
+  // console.log("relativeRequest", relativeRequest);
 
   const script = `
     import style from '!!${relativeRequest}';

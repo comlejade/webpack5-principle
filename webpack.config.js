@@ -1,5 +1,10 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+// const TestPlugin = require("./plugins/test-plugin");
+const BannerWebpackPlugin = require("./plugins/babel-webpack-plugin");
+const CleanWebpackPlugin = require("./plugins/clean-webpack-plugin");
+const AnalyzeWebpackPlugin = require("./plugins/analyze-webpack-plugin");
+const InlineChunkWebpackPlugin = require("./plugins/inline-chunk-webpack-plugin");
 
 module.exports = {
   entry: "./src/main.js",
@@ -22,13 +27,13 @@ module.exports = {
         // ],
         loader: "./loaders/clear-log-loader.js",
       },
-      {
-        test: /\.js$/,
-        loader: "./loaders/banner-loader",
-        options: {
-          author: "cjl",
-        },
-      },
+      // {
+      //   test: /\.js$/,
+      //   loader: "./loaders/banner-loader",
+      //   options: {
+      //     author: "cjl",
+      //   },
+      // },
       {
         test: /\.js$/,
         loader: "./loaders/babel-loader",
@@ -52,6 +57,22 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "public/index.html"),
     }),
+    // new TestPlugin(),
+    new BannerWebpackPlugin({
+      author: "cjl",
+    }),
+    new CleanWebpackPlugin(),
+    new AnalyzeWebpackPlugin(),
+    new InlineChunkWebpackPlugin([/runtime(.*)\.js/]),
   ],
-  mode: "development",
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
+    runtimeChunk: {
+      name: (entrypoint) => `runtime~${entrypoint.name}.js`,
+    },
+  },
+  mode: "production",
+  // mode: 'development'
 };

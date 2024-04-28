@@ -4,7 +4,7 @@ module.exports = function (content) {
   // 根据文件内容生成一个带hash值的文件名
   const interpolatedName = loaderUtils.interpolateName(
     this,
-    "[hash].[ext][query]",
+    "images/[hash].[ext][query]",
     {
       content,
     }
