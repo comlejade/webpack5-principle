@@ -36,6 +36,16 @@ module.exports = {
           presets: ["@babel/preset-env"],
         },
       },
+      {
+        test: /\.(png|jpe?g|gif|webp)$/,
+        loader: "./loaders/file-loader",
+        type: "javascript/auto", // 阻止webpack默认处理图片资源
+      },
+      {
+        test: /\.css$/,
+        // use: ["style-loader", "css-loader"],
+        use: ["./loaders/style-loader", "css-loader"],
+      },
     ],
   },
   plugins: [

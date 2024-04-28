@@ -10,10 +10,13 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-		"@babel/core": "^7.24.4",
-		"@babel/preset-env": "^7.24.4",
-		"html-webpack-plugin": "^5.6.0",
-		"webpack": "^5.91.0",
-		"webpack-cli": "^5.1.4"
-	}
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
+    "css-loader": "^7.1.1",
+    "html-webpack-plugin": "^5.6.0",
+    "loader-utils": "^3.2.1",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
 }
